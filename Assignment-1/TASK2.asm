@@ -1,0 +1,20 @@
+.Model TINY
+.386
+
+.data
+OFSET EQU 60
+ARRAY1 db 50 DUP(9h)
+;DAT2 db 00h,00h,00h,00h,00h
+
+.code
+.startup
+
+MOV CL,50
+MOV SI,offset ARRAY1
+X1:MOV AX,[SI]
+MOV [SI+OFSET],AX
+INC SI
+DEC CL
+JNZ X1
+.EXIT
+END
