@@ -1,0 +1,24 @@
+.Model TINY
+.386
+
+.data
+OFSET EQU 14h
+DAT1 db 11h,11h,11h,11h,11h
+DAT2 db 00h,00h,00h,00h,00h
+
+.code
+.startup
+
+MOV CL,5
+MOV SI,offset DAT1
+MOV DI,offset DAT2
+X1: MOV AX,[SI]
+MOV DX, [DI]
+ADD AX,DX
+MOV [DI+OFSET],AX
+INC DI
+INC SI
+DEC CL
+JNZ X1
+.EXIT
+END
